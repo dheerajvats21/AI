@@ -2,7 +2,7 @@
 
 ## **Day 1: LLM Foundations**
 
-- **Topics:  
+- Topics:  
     **
   - **ML vs DL vs LLMs (high-level difference).  
         **
