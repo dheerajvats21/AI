@@ -104,46 +104,6 @@
   - **Short read → Best practices for RAG.  
         **
 
-## **Day 7: Wrap-up & Mock Q&A**
-
-- **Topics:  
-    **
-  - **Summarize what you learned.  
-        **
-  - **Prepare short crisp answers (2–3 sentences per concept).  
-        **
-  - **Mock questions:  
-        **
-    - **_How do LLMs understand code?  
-            _**
-    - **_Why embeddings?  
-            _**
-    - **_How would you scale an AI code assistant?  
-            _**
-    - **_Why not fine-tune on repos?  
-            _**
-- **Material:  
-    **
-  - **OpenAI Cookbook examples → skim Q&A demos.  
-        **
-  - **Practice explaining concepts out loud (interviewer style).  
-        **
-
-# **🎯 Optional Project Story (only if asked)**
-
-**If interviewer asks “Do you have hands-on AI experience?”:**
-
-- **Your story (short pitch):  
-    _“I’m working on a personal project: a custom MCP server that connects Git repos with LLMs for real-time code exploration. It fetches code, generates embeddings, stores them in a vector DB, and lets developers query in natural language from inside the IDE. This avoids fine-tuning by using a retrieval-based approach. I’ve studied the architecture, and I’m in the process of implementing it.”  
-    _**
-- **If they push for details → talk about:  
-    **
-  - **Architecture (MCP server ↔ Git ↔ Vector DB ↔ LLM).  
-        **
-  - **Challenges (token limits, latency, cost).  
-        **
-  - **Why MCP (standardized, IDE integration).  
-        **
 
 
 
