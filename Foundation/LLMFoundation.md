@@ -145,16 +145,7 @@
   - **Why MCP (standardized, IDE integration).  
         **
 
-**If you don’t want to tell the story → you can just say:  
-_“I’ve been studying how LLMs, embeddings, and RAG can be applied to developer tooling. I understand the design patterns but haven’t implemented a project yet.”_**
 
-**✅ Answer to your main Q:**
-
-- **Interview-only prep (knowledge + confidence): ~7 days.  
-    **
-- **No need to build yet.  
-    **
-- **Project story → optional fallback if they insist on “practical experience.”**
 
 ## **📌 Cheat Sheet: ML vs DL vs LLMs**
 
