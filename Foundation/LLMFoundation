@@ -1,0 +1,22 @@
+Day 1: LLM Foundations
+Topics:
+
+
+ML vs DL vs LLMs (high-level difference).
+
+
+Transformers: self-attention, why they scale well.
+
+
+Tokens & context window (important when talking about code).
+
+
+Material:
+
+
+Video
+But what is a neural network? | Deep learning chapter 1 →8j1
+Large Language Models explained briefly
+Transformers, the tech behind LLMs | Deep Learning Chapter 5
+
+
