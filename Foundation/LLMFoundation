@@ -1,3 +1,5 @@
+AI
+
 Day 1: LLM Foundations
 Topics:
 
@@ -15,8 +17,224 @@ Material:
 
 
 Video
-But what is a neural network? | Deep learning chapter 1 →8j1
+But what is a neural network? | Deep learning chapter 1 → 
 Large Language Models explained briefly
 Transformers, the tech behind LLMs | Deep Learning Chapter 5
 
 
+
+Day 2: Embeddings & Vector Search
+Topics:
+
+
+What embeddings are, how text/code → vector.
+
+
+Semantic search vs keyword search.
+
+
+Why embeddings + vector DB are key for code analysis.
+
+
+Material:
+
+
+Blog → OpenAI Embeddings Guide.
+
+
+Blog → Pinecone: What are Vector Embeddings?.
+
+
+
+Day 3: Retrieval-Augmented Generation (RAG)
+Topics:
+
+
+Why you don’t fine-tune for every repo → instead use RAG.
+
+
+Chunking code (functions/classes).
+
+
+Latency & retrieval accuracy challenges.
+
+
+Material:
+
+
+Blog → RAG Explained Simply.
+
+
+Example → OpenAI Cookbook: "Question answering with embeddings".
+
+
+
+Day 4: Model Context Protocol (MCP)
+Topics:
+
+
+What MCP is (standard to connect IDE ↔ AI models).
+
+
+MCP servers expose tools (e.g., repo fetch, search).
+
+
+How IDE (like VSCode) can use MCP to visualize & extend context.
+
+
+Material:
+
+
+Docs → Model Context Protocol official site.
+
+
+Explore → Anthropic’s MCP GitHub repos (reference implementations).
+
+
+
+Day 5: AI in Developer Tools
+Topics:
+
+
+How AI is used in IDEs today (GitHub Copilot, Cody, Cursor).
+
+
+Limitations of current tools (context length, repo size).
+
+
+Where your project fits in (repo-aware MCP server).
+
+
+Material:
+
+
+Blog → How GitHub Copilot Works.
+
+
+Video → “AI for Code” talk at Stanford (searchable on YouTube).
+
+
+
+Day 6: Challenges & Trade-offs
+Topics:
+
+
+Token limits → need chunking + retrieval.
+
+
+Latency → caching embeddings.
+
+
+Cost → avoid sending full repos to LLM.
+
+
+Security → handling private repos, OAuth.
+
+
+Material:
+
+
+Blog → LLM Limitations (OpenAI).
+
+
+Short read → Best practices for RAG.
+
+
+
+Day 7: Wrap-up & Mock Q&A
+Topics:
+
+
+Summarize what you learned.
+
+
+Prepare short crisp answers (2–3 sentences per concept).
+
+
+Mock questions:
+
+
+How do LLMs understand code?
+
+
+Why embeddings?
+
+
+How would you scale an AI code assistant?
+
+
+Why not fine-tune on repos?
+
+
+Material:
+
+
+OpenAI Cookbook examples → skim Q&A demos.
+
+
+Practice explaining concepts out loud (interviewer style).
+
+
+
+🎯 Optional Project Story (only if asked)
+If interviewer asks “Do you have hands-on AI experience?”:
+Your story (short pitch):
+ “I’m working on a personal project: a custom MCP server that connects Git repos with LLMs for real-time code exploration. It fetches code, generates embeddings, stores them in a vector DB, and lets developers query in natural language from inside the IDE. This avoids fine-tuning by using a retrieval-based approach. I’ve studied the architecture, and I’m in the process of implementing it.”
+
+
+If they push for details → talk about:
+
+
+Architecture (MCP server ↔ Git ↔ Vector DB ↔ LLM).
+
+
+Challenges (token limits, latency, cost).
+
+
+Why MCP (standardized, IDE integration).
+
+
+If you don’t want to tell the story → you can just say:
+ “I’ve been studying how LLMs, embeddings, and RAG can be applied to developer tooling. I understand the design patterns but haven’t implemented a project yet.”
+
+✅ Answer to your main Q:
+Interview-only prep (knowledge + confidence): ~7 days.
+
+
+No need to build yet.
+
+
+Project story → optional fallback if they insist on “practical experience.”
+
+
+
+📌 Cheat Sheet: ML vs DL vs LLMs
+Machine Learning (ML)
+Algorithms that learn from data to make predictions (e.g., decision trees, regression, SVM).
+Doesn’t require deep neural networks.
+Example: Predicting house prices from features.
+
+
+Deep Learning (DL)
+Subset of ML using neural networks with many layers.
+Learns features automatically (no manual feature engineering).
+Example: Image recognition using CNNs, speech recognition using RNNs.
+Large Language Models (LLMs)
+A special type of DL model (transformers) trained on massive text/code datasets.
+Learns statistical patterns in language.
+Can generate, summarize, translate, and reason about text/code.
+Examples: GPT, Claude, LLaMA.
+
+
+“Machine Learning is about algorithms that learn patterns from data, like regression or decision trees. Deep Learning is a subset that uses large neural networks to automatically extract features, making it powerful for images, speech, and text. Large Language Models are a specific kind of deep learning model, based on transformers, trained on massive amounts of text and code. They’re designed to work with natural language — generating, summarizing, or reasoning about it.”
+
+Token and context window
+TOKENS - “LLMs process text as tokens, not characters. A token is a chunk of text like a word or part of a word. The context window is the max number of tokens the model can handle in one go. For example, GPT-4 can handle up to 128k tokens, which is about 300 pages. This limit is why you can’t just feed an entire codebase at once — instead you split it into chunks and use embeddings + retrieval. Code gets tokenized too (operators, keywords, identifiers often become separate tokens).”
+CONTEXT WINDOW- “In GPT-3, the context window is ~4k tokens. At every step, the model predicts the next token based on everything in the current context. For conversations, the entire history is passed back in at each turn, so it doesn’t have true memory — it just reprocesses the dialogue every time. Once you hit the 4k limit, older parts of the conversation are truncated, which is why long chats eventually lose earlier details. So it has working memory(short term) of 4k characters only allowing it maintain coherence”
+
+- Multi-turn conversation - GPT doesn’t have memory between turns like a human brain. Instead, the conversation history is packed into the input every time: 
+Turn 1: User: Hello Assistant: Hi, how can I help? 
+Turn 2: Input to GPT is now the entire conversation so far: User: Hello Assistant: Hi, how can I help? User: Can you explain transformers? → 
+The model sees both the old and new text (as tokens) and predicts the next assistant reply. 
+
+LLM, Tech behind LLM, attention
