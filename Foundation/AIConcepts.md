@@ -104,7 +104,7 @@
   - **Short read → Best practices for RAG.  
         **
 
-## **Day 7: Wrap-up & Mock Q&A**
+## **Day 7: Wrap-up**
 
 - **Topics:  
     **
@@ -127,22 +127,6 @@
   - **OpenAI Cookbook examples → skim Q&A demos.  
         **
   - **Practice explaining concepts out loud (interviewer style).  
-        **
-
-# **🎯 Optional Project Story (only if asked)**
-
-**If interviewer asks “Do you have hands-on AI experience?”:**
-
-- **Your story (short pitch):  
-    _“I’m working on a personal project: a custom MCP server that connects Git repos with LLMs for real-time code exploration. It fetches code, generates embeddings, stores them in a vector DB, and lets developers query in natural language from inside the IDE. This avoids fine-tuning by using a retrieval-based approach. I’ve studied the architecture, and I’m in the process of implementing it.”  
-    _**
-- **If they push for details → talk about:  
-    **
-  - **Architecture (MCP server ↔ Git ↔ Vector DB ↔ LLM).  
-        **
-  - **Challenges (token limits, latency, cost).  
-        **
-  - **Why MCP (standardized, IDE integration).  
         **
 
 ## **📌 Cheat Sheet: ML vs DL vs LLMs**
@@ -485,6 +469,7 @@ Plug in any tool, and the brain can use it without needing custom adapters.
 ## **🔄 Final Flow (Your “Find login function” Example)**
 
 ```
+
 You: "Find the function where login happens"
 
 1\. Client (IDE) receives your NL request.
@@ -506,6 +491,7 @@ You: "Find the function where login happens"
 7\. LLM analyzes code → responds in NL:
 
 "Here’s the login function..."
+
 ```
 
 ## **📝 Summary**
