@@ -416,3 +416,149 @@ Query → Orchestrator → Retrieval (Vector DB) → Augmentation (add context) 
 ### **_💡 one-liner_**
 
 **_“Instead of slicing text blindly, the best RAG chunking methods use contextual headers, semantic boundaries, and small overlaps so chunks remain coherent and retrieval is accurate.”_**
+
+## MCP SERVERS
+
+Context -
+
+Now given an LLM, and a concept of RAG , we can see that we can give LLM a context and it can give me some meaningful answer. So is it possible that in place of data i.e vector DB, Can i have APIs and based on query from a user , can i use LLM to tell me what to do to perform a task for the query, i.e what apIs to call from these different set of apis to perform the task ?  
+<br/>Can i tell the LLM (brain) all of the tools i have at my fingers as context at start i.e APIs and can ask LLM what to do now to perform a task.
+
+YES!!!!!
+
+### **Step 1: Context**
+
+We have a **brain (LLM)** that understands language.  
+We have many **tools (APIs, repos, databases, services)** that can do useful work.
+
+To finish a task, the LLM needs to **talk to these tools** tell them what to do. An orchestrator/**Agent** can relay message to and from LLM and these tools.
+
+### **Step 2: Naive Solution**
+
+We could just tell the LLM what APIs exist:
+
+- “Here’s GitHub API.”
+- “Here’s Database API.”
+- “Here’s Logging API.”
+
+Then, when you ask: _“Find the login function”_, the LLM figures out:
+
+- Which API to use.
+- What call to make.
+
+Orchestrator/client/Agent then takes LLM’s output, adapts it, and calls the tool.
+
+### **Step 3: The Problem**
+
+But every tool has a **different API style**.
+
+- GitHub looks one way.
+- Database looks another way.
+- Logs look different again.
+
+So the client always needs **custom glue code** to:
+
+1. Parse LLM’s output.
+2. Map it to the right API call. And make the call from client to that tool via code.
+3. Handle results in a special format.
+
+This is messy and constantly changing.
+
+### **Step 4: The MCP Way**
+
+MCP solves this by giving a **common language**:
+
+- Every tool exposes itself as an **MCP server**.
+- Each says: _“Here are my capabilities, here’s how you talk to me.”_
+- All in the same standard JSON message format.
+
+Now:
+
+- LLM learns this MCP “language.”
+- LLM says: _“Send this MCP message to the GitHub tool.”_
+- Client just **forwards blindly** — no glue code.
+- Tool responds back in MCP format.
+
+So MCP is like a **USB port for LLMs**: So AI is connected to tools via standard USB port called MCP via client (to relay message).  
+Plug in any tool, and the brain can use it without needing custom adapters.
+
+## **🔄 Final Flow (Your “Find login function” Example)**
+
+```
+You: "Find the function where login happens"
+
+1\. Client (IDE) receives your NL request.
+
+2\. Client sends it to LLM.
+
+3\. LLM interprets intent:
+
+→ Decides: "Use tool repo.searchCode(query='login')"
+
+→ Outputs MCP tool call (structured JSON).
+
+4\. Client forwards MCP message to GitHub repo server.
+
+5\. Repo server executes search → returns code snippet.
+
+6\. Client passes result to LLM.
+
+7\. LLM analyzes code → responds in NL:
+
+"Here’s the login function..."
+```
+
+## **📝 Summary**
+
+### **1\. What is MCP?**
+
+- **Model Context Protocol (MCP)** is a **standard way** for clients (like IDEs) and servers (like GitHub, DBs, APIs) to talk.
+- Think of it like USB for **AI tools (**not AI i.e tools can connect to AI) — one plug works everywhere.
+
+### **2\. Is it like RAG?**
+
+- In **RAG**, the **orchestrator pulls data** from a vector DB and passes it to the LLM. Client an DB are tightly coupled, Client know how to call DB.
+- In **MCP**, the **client/orchestrator pulls info** (or performs actions) via MCP tools, then passes results to the LLM in a standard way.
+- ✅ **LLM never fetches by itself.** Orchestrator does the pulling.
+
+### **3\. Who listens to my instruction?**
+
+- **IDE (client)** hears your instruction.
+- IDE passes it to the **LLM**.
+- **LLM interprets intent** and decides if a tool is needed.
+- **Client** uses MCP to call the right tool.
+- Tool executes → returns → LLM answers.
+
+### **4\. Does MCP process natural language?**
+
+- ❌ No. MCP does **not** understand natural language.
+- **LLM interprets NL** and outputs a **structured tool call** (JSON-like).
+- Client forwards that call via MCP → tool runs → result goes back.
+
+### **5\. How does LLM know what tools exist?**
+
+- MCP servers **advertise capabilities** in a **standard schema** (tool name, description, parameters).
+- Client sends this schema to the LLM as context.
+- LLM then knows:  
+    “I can call repo.searchCode(query) when user asks about code.”
+
+### **6\. Why MCP vs normal APIs?**
+
+- Without MCP: client must **parse & adapt** LLM output into each tool’s custom API.
+- With MCP: tools follow a **standard message format**.
+- ✅ Client can just **forward LLM’s MCP message** to the tool — no glue code.
+
+### **7\. Who picks the tool if multiple exist?**
+
+- **LLM picks the tool** (includes tool name in the MCP message).
+- **Client only routes** the message to that tool.
+
+### **8\. How do we know what an MCP server can do?**
+
+- MCP has a **discovery API**.
+- Client can ask: “What tools do you provide?”
+- Server replies with a standard schema describing all tools.
+- Client shares that with LLM.
+
+✅ So MCP = **standard language** for describing tools + sending structured requests/responses,  
+making LLM ↔ tools integration **plug-and-play**.
