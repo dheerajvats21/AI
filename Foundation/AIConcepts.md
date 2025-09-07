@@ -1,6 +1,6 @@
 # AI
 
-## **Day 1: LLM Foundations**
+## **Part 1: LLM Foundations**
 
 - **Topics:  
     **
@@ -17,7 +17,7 @@
   - [**Large Language Models explained briefly**](https://www.youtube.com/watch?v=LPZh9BOjkQs&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=5)
   - [**Transformers, the tech behind LLMs | Deep Learning Chapter 5**](https://www.youtube.com/watch?v=wjZofJX0v4M&list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&index=6)
 
-## **Day 2: Embeddings & Vector Search**
+## **Part 2: Embeddings & Vector Search**
 
 - **Topics:  
     **
@@ -34,7 +34,7 @@
   - **Blog → Pinecone: What are Vector Embeddings?.  
         **
 
-## **Day 3: Retrieval-Augmented Generation (RAG)**
+## **Part 3: Retrieval-Augmented Generation (RAG)**
 
 - **Topics:  
     **
@@ -51,7 +51,7 @@
   - **Example → OpenAI Cookbook:** [**"Question answering with embeddings"**](https://github.com/openai/openai-cookbook/blob/main/examples/Question_answering_using_embeddings.ipynb?utm_source=chatgpt.com)**.  
         **
 
-## **Day 4: Model Context Protocol (MCP)**
+## **Part 4: Model Context Protocol (MCP)**
 
 - **Topics:  
     **
@@ -68,7 +68,7 @@
   - **Explore → Anthropic’s MCP GitHub repos (reference implementations).  
         **
 
-## **Day 5: AI in Developer Tools**
+## **Part 5: AI in Developer Tools**
 
 - **Topics:  
     **
@@ -85,7 +85,7 @@
   - **Video → “AI for Code” talk at Stanford (searchable on YouTube).  
         **
 
-## **Day 6: Challenges & Trade-offs**
+## **Part 6: Challenges & Trade-offs**
 
 - **Topics:  
     **
@@ -104,30 +104,9 @@
   - **Short read → Best practices for RAG.  
         **
 
-## **Day 7: Wrap-up**
+##
 
-- **Topics:  
-    **
-  - **Summarize what you learned.  
-        **
-  - **Prepare short crisp answers (2–3 sentences per concept).  
-        **
-  - **Mock questions:  
-        **
-    - **_How do LLMs understand code?  
-            _**
-    - **_Why embeddings?  
-            _**
-    - **_How would you scale an AI code assistant?  
-            _**
-    - **_Why not fine-tune on repos?  
-            _**
-- **Material:  
-    **
-  - **OpenAI Cookbook examples → skim Q&A demos.  
-        **
-  - **Practice explaining concepts out loud (interviewer style).  
-        **
+##
 
 ## **📌 Cheat Sheet: ML vs DL vs LLMs**
 
@@ -213,7 +192,9 @@
 
 **_LLM → Transformer → Tokens → Embeddings → Q/K/V → Attention → Multi-Head → MLP → Residual → LayerNorm → Stacked Layers → Unembedding → Softmax → Next Token_**
 
-### Token and context window
+###
+
+### **Token and context window**
 
 **_TOKENS - “LLMs process text as tokens, not characters. A token is a chunk of text like a word or part of a word. The context window is the max number of tokens the model can handle in one go. For example, GPT-4 can handle up to 128k tokens, which is about 300 pages. This limit is why you can’t just feed an entire codebase at once — instead you split it into chunks and use embeddings + retrieval. Code gets tokenized too (operators, keywords, identifiers often become separate tokens).”_**
 
@@ -230,9 +211,21 @@ The model sees both the old and new text (as tokens) and predicts the next assis
 **_So in MLP layer we thought that single row / question would tell about a feature in the text, i.e a single value in upward projected vector is a feature. And column in second matrix also dictates the amount by which that feature goes into final embeddings. But one single value is not a single feature in practise, It is combination of multiple values (neurons). I.e feature is combination of multiple perpendicular dimensions i.e directions for features doesnot have to be prependicular.  
 THIS IDEA IS CALLED SUPERPOSITION. Nearly perpendicular direction increase exponentially with perpendicular dimensions i.e why exponentially more features that can be caught. So a feature is not one question or one neuron but combination of more than one._**
 
-**_PART 2_**
+##
 
-## Embeddings and semantic Search
+##
+
+##
+
+##
+
+##
+
+##
+
+##
+
+## **_Embeddings and semantic Search_**
 
 [Video1](https://www.youtube.com/watch?v=OATCgQtNX2o) - How we do semantic search, similarity, mean pooling
 
@@ -284,6 +277,24 @@ _👉 In short:_ **_Tokens → embeddings → mean pooling → sentence embeddin
 **Asking LLM directly** → it guesses from general training (risk of hallucination).**With embeddings + Vector DB (RAG)** → it grounds answers in your actual data/code (accurate + context-aware).
 
 Query → Embed Query → Vector DB (find neighbors) → Retrieved Context + Query → LLM → Answer
+
+##
+
+##
+
+##
+
+##
+
+##
+
+##
+
+##
+
+##
+
+##
 
 ##
 
@@ -401,7 +412,15 @@ Query → Orchestrator → Retrieval (Vector DB) → Augmentation (add context) 
 
 **_“Instead of slicing text blindly, the best RAG chunking methods use contextual headers, semantic boundaries, and small overlaps so chunks remain coherent and retrieval is accurate.”_**
 
-## MCP SERVERS
+##
+
+##
+
+##
+
+##
+
+## MCP SERVERS/ Agentic AI
 
 Context -
 
@@ -548,3 +567,133 @@ You: "Find the function where login happens"
 
 ✅ So MCP = **standard language** for describing tools + sending structured requests/responses,  
 making LLM ↔ tools integration **plug-and-play**.
+
+# AI in dev tools
+
+### What is GitHub Copilot?
+
+#### [Copilot features](https://docs.github.com/en/copilot/get-started/what-is-github-copilot#copilot-features)
+
+_GitHub Copilot includes a suite of features. You can use Copilot to:_
+
+_Copilot is powered by OpenAI’s GPT models, fine-tuned for code.  
+Works inside IDEs (VS Code, JetBrains, etc.) to suggest code as you type._
+
+_Uses_ **_context awareness_**_: reads current file, sometimes nearby files, and developer comments to make predictions._
+
+_Strengths: speeds up coding, fills in boilerplate, suggests whole functions._
+
+_Weaknesses: limited by model’s_ **_context length_**_; can hallucinate; doesn’t always understand the entire repo._
+
+[_Agentic Mode_](https://github.blog/ai-and-ml/github-copilot/agent-mode-101-all-about-github-copilots-powerful-mode/?utm_source=chatgpt.com)
+
+_New_ **_Agent Mode_** _goes beyond autocomplete → acts more like an “AI teammate.”_
+
+_Can_ **_use tools_** _exposed via MCP (e.g., read_file, edit_file, run_in_terminal)._
+
+_Supports_ **_multi-step workflows_**_: instead of just suggesting one line, it can chain actions (e.g., open a file → edit a function → run tests)._
+
+_This makes it repo-aware and able to perform tasks like refactoring, debugging, or code navigation._
+
+_Still experimental — requires trust, safety checks, and human review._
+
+**_3\. Best Large Language Models (LLMs) for coding of 2025 (TechRadar)_**
+
+- _GitHub Copilot (powered by GPT-4 Turbo) is rated the_ **_#1 coding assistant_** _for enterprises._
+- _Main benefits:_ **_Deep IDE integration_**_,_ **_Real-time coding help_**_,_ **_Enterprise readiness_** _(security, compliance)._
+- _Others (e.g., Claude, Code Llama, Cursor) are catching up, but Copilot leads due to maturity and ecosystem._
+- _Limitations remain: context window size, occasional bugs, and dependency on model quality._
+
+_🔑_ **_Overall Takeaways from All Articles_**
+
+1. **_Copilot’s core_** _= AI autocomplete inside IDEs, trained on public code._
+2. **_Agent Mode_** _= next step → repo-aware, tool-using assistant via MCP._
+3. **_Strengths_**_: speed, productivity, boilerplate elimination, IDE integration._
+4. **_Weaknesses_**_: context window constraints, hallucinations, security risks._
+5. **_Future direction_**_: bridging gaps with repo-aware agents (exactly what your MCP server idea does)._
+
+[_Good video_](https://www.youtube.com/watch?v=J91_npj0Nfw)
+
+# **📖 Challenges & Trade-offs**
+
+## **1\. Token Limits → Chunking & Retrieval**
+
+- **Problem:** LLMs have a _context window_ (e.g., 8k, 32k tokens). Large repos or docs don’t fit.
+- **Solution:**
+  - **Chunking:** Split large files into manageable pieces (e.g., 500–1000 tokens).
+  - **Retrieval:** At query time, fetch only the _relevant chunks_ using embeddings + similarity search.
+- **Best Practices:**
+  - Fixed-length chunks with little overlap are usually fastest.
+  - Structure-based chunking (e.g., split by function, section, heading) improves retrieval quality.
+  - Avoid making chunks too small (loses context) or too big (risks hitting token limits).
+
+👉 **Takeaway:** You never send the full repo; you send _just the right slices_.
+
+## **2\. Latency → Caching Embeddings**
+
+- **Problem:**
+  - Generating embeddings for every query is slow and wasteful.
+  - Response time grows with **output length** more than input size (e.g., 1-token output ~0.6 s vs 26-token output ~1.4 s).
+- **Solution:**
+  - **Cache embeddings:** Once you embed a file, store it. Next time you search, reuse the stored vector instead of recomputing.
+  - **Semantic caching:** Store past Q&A pairs → if a similar question is asked, return cached results instead of hitting the LLM again.
+- **Best Practices:**
+  - Keep embeddings in a fast store (e.g., Redis, Pinecone, Milvus).
+  - Use cache keys (hash of content or query).
+
+👉 **Takeaway:** Cache aggressively to save time and avoid duplicate work.
+
+## **3\. Cost → Avoid Sending Full Repos**
+
+- **Problem:**
+  - LLMs charge per token. Large repos = thousands of tokens = high cost.
+  - Example: 100k tokens \* 1¢/1k = $1 per query → adds up fast.
+- **Solution:**
+  - Chunk + retrieve (from Step 1).
+  - Reuse cached embeddings (Step 2).
+  - Use smaller/cheaper models for easy tasks; only use bigger models when necessary.
+- **Best Practices:**
+  - Prompt compression (summaries, key points).
+  - Cache reusable prompt prefixes.
+  - Use routing (LiteLLM/LangChain) to decide which model is best per query.
+
+👉 **Takeaway:** Send the _minimum tokens_ needed → cost savings + faster responses.
+
+## **4\. Security → Private Repos & OAuth**
+
+- **Risks:**
+  - Exposing proprietary code/data to external LLMs.
+  - Vector databases may store sensitive info unencrypted.
+  - OAuth flows need proper scopes (read-only, least privilege).
+- **Mitigations:**
+  - Always authenticate via **OAuth** or PAT (Personal Access Token).
+  - Encrypt embeddings at rest & enforce role-based access.
+  - Add PII filtering or redaction before sending to the LLM.
+  - Use enterprise “AI gateways” (policy layer) to enforce limits:
+    - Token budgets
+    - Model selection rules
+    - Audit logging
+- **Best Practices:**
+  - Follow least-privilege principle.
+  - Never send entire private repo; serve only retrieved chunks.
+  - Be transparent in data handling (privacy compliance).
+
+👉 **Takeaway:** Treat AI like any external system → strict auth, logging, encryption, least privilege.
+
+## **5\. RAG Best Practices (Putting It All Together)**
+
+- **Query Routing:** Not every question needs retrieval. First, check if it’s answerable without docs.
+- **Hybrid Search:** Combine vector (semantic) search with keyword search → better relevance.
+- **Re-ranking:** Fetch top ~20 results, then rerank them for final top 3–5.
+- **Knowledge Freshness:** Regularly update your embeddings when repo changes.
+- **Evaluation:** Test your RAG pipeline automatically (precision, recall, accuracy).
+
+👉 **Takeaway:** RAG = Chunk + Store + Retrieve + Rank. Done well, it balances token limits, latency, cost, and security.
+
+# **🚀 Mental Model**
+
+- **Token limits** → Chunking + Retrieval.
+- **Latency** → Cache embeddings & semantic Q&A.
+- **Cost** → Minimize tokens, route tasks to right models.
+- **Security** → OAuth, least privilege, encryption, logging.
+- **RAG Best Practices** → Hybrid search, reranking, freshness, evaluation.
