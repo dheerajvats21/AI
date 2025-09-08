@@ -47,4 +47,20 @@ if __name__ == "__main__":
 python3 -m venv venv
 source venv/bin/activate
 
+
+when used with cursor 
+
+Query -gimme where is CartController only using mcp
+
+
+
+I'll locate it via MCP by listing the controller directory.
+
+[1 tool called]
+
+Found via MCP:
+
+- `CartController.java` at:
+  `/Users/Dheeraj/Documents/Design/SpringBootQuestions/Cart/src/main/java/com/example/Cart/controller/CartController.java`
+
 """
