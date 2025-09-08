@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "cart-mcp": {
+      "command": "/Users/Dheeraj/Documents/AI/my-mcp-server/venv/bin/python /Users/Dheeraj/Documents/AI/my-mcp-server/mcp-server-mcp.py"
+    }
+  }
+}
+
+// if does not work maybe try this, currently working if doesnot 
+// work add this to command itself maybe 
+// cd /Users/Dheeraj/Documents/AI/my-mcp-server
+// python3 -m venv venv
+// source venv/bin/activate
